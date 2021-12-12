@@ -781,7 +781,9 @@ MonoBehaviour:
   limitMaxX: 3.2
   limitMinX: -3.2
   velocityObject: -2
-  distanceDestroy: -10
+  distanceDestroy: -9.92
+  sizeBridge: 9.92
+  bridgePrefab: {fileID: 2045785977570565151, guid: a31fbc5953d82dd4c8f6136b24232f6d, type: 3}
 --- !u!1 &2102199989
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2045785977570565149, guid: a31fbc5953d82dd4c8f6136b24232f6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2045785977570565149, guid: a31fbc5953d82dd4c8f6136b24232f6d, type: 3}
       propertyPath: m_LocalPosition.y

@@ -7,6 +7,8 @@ public class controlBridge : MonoBehaviour
     private GameController _GameController;
     private Rigidbody2D bridgeRb;
 
+    private bool isInstantiated;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,18 @@ public class controlBridge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isInstantiated == false)
+        {
+            if (transform.position.x <= 0)
+            {
+                isInstantiated = true;
+                GameObject temp = Instantiate(_GameController.bridgePrefab);
+                float posX = transform.position.x + _GameController.sizeBridge;
+                float posY = transform.position.y;
+                temp.transform.position = new Vector2(posX, posY);
+            }
+        }
+
         if (transform.position.x < _GameController.distanceDestroy)
         {
             Destroy(this.gameObject);

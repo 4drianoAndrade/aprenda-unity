@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour
     public float velocityObject;
     public float distanceDestroy;
 
+    public float sizeBridge;
+    public GameObject bridgePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
