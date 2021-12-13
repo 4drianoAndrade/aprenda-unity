@@ -8,6 +8,8 @@ public class controlBarrel : MonoBehaviour
 
     private Rigidbody2D barrelRb;
 
+    private bool punctuated;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +22,18 @@ public class controlBarrel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x < _GameController.distanceDestroy)
+        if (transform.position.x < _GameController.distanceDestroy)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (punctuated == false && transform.position.x < _GameController.posXPlayer)
+        {
+            punctuated = true;
+            _GameController.toScore(10);
         }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    private playerController _playerController;
+
     [Header("Config. Character")]
 
     public float velocityMovement;
@@ -32,16 +34,23 @@ public class GameController : MonoBehaviour
 
     public float timeSpawn;
 
+    [Header("Globals")]
+
+    public int score;
+
+    public float posXPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
+        _playerController = FindObjectOfType(typeof(playerController)) as playerController;
         StartCoroutine("spawnBarrel");
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-
+        posXPlayer = _playerController.transform.position.x;
     }
 
     IEnumerator spawnBarrel()
@@ -70,5 +79,10 @@ public class GameController : MonoBehaviour
         temp.GetComponent<SpriteRenderer>().sortingOrder = order;
 
         StartCoroutine("spawnBarrel");
+    }
+
+    public void toScore(int qttPoints)
+    {
+        score += qttPoints;
     }
 }
