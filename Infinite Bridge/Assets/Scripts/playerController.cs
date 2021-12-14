@@ -51,4 +51,10 @@ public class playerController : MonoBehaviour
 
         transform.position = new Vector2(posX, posY);
     }
+
+    void OnTriggerEnter2D()
+    {
+        Debug.LogError("GameOver");
+        print("Bateu");
+    }
 }
