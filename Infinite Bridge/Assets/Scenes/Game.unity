@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   incrementOffset: 0.001
-  speed: 0.2
+  speed: 0.3
   sortingLayer: backGround
   orderInLayer: 1
 --- !u!1 &424493036
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   incrementOffset: 0.001
-  speed: 0.6
+  speed: 0.8
   sortingLayer: backGround
   orderInLayer: 2
 --- !u!1 &519420028
