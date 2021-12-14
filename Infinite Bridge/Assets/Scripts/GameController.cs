@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -84,5 +85,10 @@ public class GameController : MonoBehaviour
     public void toScore(int qttPoints)
     {
         score += qttPoints;
+    }
+
+    public void changeScene(string sceneDestiny)
+    {
+        SceneManager.LoadScene(sceneDestiny);
     }
 }

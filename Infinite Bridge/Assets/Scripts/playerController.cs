@@ -54,7 +54,6 @@ public class playerController : MonoBehaviour
 
     void OnTriggerEnter2D()
     {
-        Debug.LogError("GameOver");
-        print("Bateu");
+        _GameController.changeScene("GameOver");
     }
 }
