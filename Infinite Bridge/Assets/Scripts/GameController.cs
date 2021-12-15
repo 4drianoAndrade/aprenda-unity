@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class GameController : MonoBehaviour
     [Header("Globals")]
 
     public int score;
+
+    public Text txtScore;
 
     public float posXPlayer;
 
@@ -85,6 +88,7 @@ public class GameController : MonoBehaviour
     public void toScore(int qttPoints)
     {
         score += qttPoints;
+        txtScore.text = score.ToString();
     }
 
     public void changeScene(string sceneDestiny)
