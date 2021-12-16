@@ -5,16 +5,13 @@ using UnityEngine;
 public class controlBarrel : MonoBehaviour
 {
     private GameController _GameController;
-
     private Rigidbody2D barrelRb;
-
     private bool punctuated;
 
     // Start is called before the first frame update
     void Start()
     {
         _GameController = FindObjectOfType(typeof(GameController)) as GameController;
-
         barrelRb = GetComponent<Rigidbody2D>();
         barrelRb.velocity = new Vector2(_GameController.velocityObject, 0);
     }

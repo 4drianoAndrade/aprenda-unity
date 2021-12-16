@@ -5,16 +5,13 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     private GameController _GameController;
-
     private Rigidbody2D playerRb;
 
     // Start is called before the first frame update
     void Start()
     {
         _GameController = FindObjectOfType(typeof(GameController)) as GameController;
-
         Application.targetFrameRate = 60;
-
         playerRb = GetComponent<Rigidbody2D>();
     }
 
@@ -23,10 +20,8 @@ public class playerController : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-
         float posY = transform.position.y;
         float posX = transform.position.x;
-
         playerRb.velocity = new Vector2(horizontal * _GameController.velocityMovement, vertical * _GameController.velocityMovement);
 
         // Verifica o limite X

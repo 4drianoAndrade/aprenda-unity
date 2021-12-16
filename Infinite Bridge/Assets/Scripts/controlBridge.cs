@@ -6,16 +6,13 @@ public class controlBridge : MonoBehaviour
 {
     private GameController _GameController;
     private Rigidbody2D bridgeRb;
-
     private bool isInstantiated;
 
     // Start is called before the first frame update
     void Start()
     {
         _GameController = FindObjectOfType(typeof(GameController)) as GameController;
-
         bridgeRb = GetComponent<Rigidbody2D>();
-
         bridgeRb.velocity = new Vector2(_GameController.velocityObject, 0);
     }
 

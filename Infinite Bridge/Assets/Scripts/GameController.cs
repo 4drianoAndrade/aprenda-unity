@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     [Header("Config. Character")]
 
     public float velocityMovement;
-
     public float limitMaxY;
     public float limitMinY;
     public float limitMaxX;
@@ -21,7 +20,6 @@ public class GameController : MonoBehaviour
 
     public float velocityObject;
     public float distanceDestroy;
-
     public float sizeBridge;
     public GameObject bridgePrefab;
 
@@ -31,18 +29,19 @@ public class GameController : MonoBehaviour
     public float posYBottom;
     public int orderTop;
     public int orderBottom;
-
     public GameObject barrelPrefab;
-
     public float timeSpawn;
 
     [Header("Globals")]
 
     public int score;
-
     public Text txtScore;
-
     public float posXPlayer;
+
+    [Header("FX Sound")]
+
+    public AudioSource fxSource;
+    public AudioClip fxPoints;
 
     // Start is called before the first frame update
     void Start()
@@ -60,10 +59,8 @@ public class GameController : MonoBehaviour
     IEnumerator spawnBarrel()
     {
         yield return new WaitForSeconds(timeSpawn);
-
         float posY = 0;
         int order = 0;
-
         int rand = Random.Range(0, 100);
 
         if (rand < 50)
@@ -78,17 +75,16 @@ public class GameController : MonoBehaviour
         }
 
         GameObject temp = Instantiate(barrelPrefab);
-
         temp.transform.position = new Vector2(temp.transform.position.x, posY);
         temp.GetComponent<SpriteRenderer>().sortingOrder = order;
-
         StartCoroutine("spawnBarrel");
     }
 
     public void toScore(int qttPoints)
     {
         score += qttPoints;
-        txtScore.text = score.ToString();
+        txtScore.text = "Score: " + score.ToString();
+        fxSource.PlayOneShot(fxPoints);
     }
 
     public void changeScene(string sceneDestiny)

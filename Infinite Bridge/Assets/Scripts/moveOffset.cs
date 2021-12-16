@@ -6,23 +6,18 @@ public class moveOffset : MonoBehaviour
 {
     private Renderer meshRenderer;
     private Material currentMaterial;
-
     public float incrementOffset;
     public float speed;
-
     public string sortingLayer;
     public int orderInLayer;
-
     private float offSet;
 
     // Start is called before the first frame update
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-
         meshRenderer.sortingLayerName = sortingLayer;
         meshRenderer.sortingOrder = orderInLayer;
-
         currentMaterial = meshRenderer.material;
     }
 
