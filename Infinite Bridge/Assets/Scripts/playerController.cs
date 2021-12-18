@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    //private JoyStick control;
     private GameController _GameController;
     private Rigidbody2D playerRb;
 
     // Start is called before the first frame update
     void Start()
     {
+        //control = FindObjectOfType(typeof(JoyStick)) as JoyStick;
         _GameController = FindObjectOfType(typeof(GameController)) as GameController;
         Application.targetFrameRate = 60;
         playerRb = GetComponent<Rigidbody2D>();
@@ -23,6 +25,10 @@ public class playerController : MonoBehaviour
         float posY = transform.position.y;
         float posX = transform.position.x;
         playerRb.velocity = new Vector2(horizontal * _GameController.velocityMovement, vertical * _GameController.velocityMovement);
+
+        //float h = control.Horizontal();
+        //float v = control.Vertical();
+        //playerRb.velocity = new Vector2(h * _GameController.velocityMovement, v * _GameController.velocityMovement);
 
         // Verifica o limite X
         if (transform.position.x > _GameController.limitMaxX)
