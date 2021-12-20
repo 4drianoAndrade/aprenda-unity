@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class bunnyController : MonoBehaviour
 {
+    private GameController _GameController;
+
     [Header("Config. Player")]
 
     public float forceJump;
@@ -14,6 +16,7 @@ public class bunnyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _GameController = FindObjectOfType(typeof(GameController)) as GameController;
         rbPlayer = GetComponent<Rigidbody2D>();
     }
 
@@ -28,6 +31,21 @@ public class bunnyController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && grounded == true)
         {
             rbPlayer.AddForce(new Vector2(0, forceJump));
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "collectable":
+                _GameController.toScore(10);
+                Destroy(collision.gameObject);
+                break;
+
+            case "obstacle":
+                _GameController.changeScene("GameOver");
+                break;
         }
     }
 }
