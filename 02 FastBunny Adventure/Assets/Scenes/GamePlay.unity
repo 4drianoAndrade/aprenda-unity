@@ -280,8 +280,8 @@ GameObject:
   - component: {fileID: 858759325}
   - component: {fileID: 858759327}
   - component: {fileID: 858759326}
-  - component: {fileID: 858759328}
   - component: {fileID: 858759329}
+  - component: {fileID: 858759328}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -297,7 +297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858759322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.42, y: -4.45, z: 0}
+  m_LocalPosition: {x: -5.42, y: -4.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1878201355}
@@ -375,7 +375,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!58 &858759326
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -427,11 +427,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 858759322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 926760894767bac44b89a78195da817d, type: 3}
+  m_Script: {fileID: 11500000, guid: de52065457392f348b9e8e438df0c4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceJump: 450
   groundCheck: {fileID: 1878201355}
+  speed: 5
 --- !u!95 &858759329
 Animator:
   serializedVersion: 3
@@ -593,7 +593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878201354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.081, y: -0.02, z: 0}
+  m_LocalPosition: {x: 0.081, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 858759323}
