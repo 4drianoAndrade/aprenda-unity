@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
     private float speedY;
 
     public float speed;
+    public float jumpForce;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,6 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         float horizontal = Input.GetAxisRaw("Horizontal");
 
         if (horizontal != 0)
@@ -45,6 +45,11 @@ public class Character : MonoBehaviour
 
         speedY = playerRb.velocity.y;
         playerRb.velocity = new Vector2(horizontal * speed, speedY);
+
+        if (Input.GetButtonDown("Jump") && isGrounded == true)
+        {
+            playerRb.AddForce(new Vector2(0, jumpForce));
+        }
     }
 
     void LateUpdate()
