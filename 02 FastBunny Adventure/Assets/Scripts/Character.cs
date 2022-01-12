@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
     private Rigidbody2D playerRb;
     private Animator playerAnimator;
+    private SpriteRenderer playerSr;
 
     public Transform groundCheck;
 
@@ -17,11 +18,14 @@ public class Character : MonoBehaviour
     public float speed;
     public float jumpForce;
 
+    public bool isLeft;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        playerSr = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -43,6 +47,16 @@ public class Character : MonoBehaviour
             speedX = 0;
         }
 
+        if (isLeft == true && horizontal > 0)
+        {
+            flip();
+        }
+
+        if (isLeft == false && horizontal < 0)
+        {
+            flip();
+        }
+
         speedY = playerRb.velocity.y;
         playerRb.velocity = new Vector2(horizontal * speed, speedY);
 
@@ -57,5 +71,17 @@ public class Character : MonoBehaviour
         playerAnimator.SetInteger("speedX", speedX);
         playerAnimator.SetFloat("speedY", speedY);
         playerAnimator.SetBool("isGrounded", isGrounded);
+    }
+
+    // FUNÇÃO RESPONSÁVEL POR VIRAR A DIREÇÃO QUE O PERSONAGEM ESTÁ OLHANDO
+    void flip()
+    {
+        isLeft = !isLeft;
+
+        //float x = transform.localScale.x;
+        //x *= -1; // INVERTE O SINAL DO SCALE
+        //transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+
+        playerSr.flipX = isLeft;
     }
 }
