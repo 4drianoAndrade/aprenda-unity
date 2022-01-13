@@ -6,52 +6,18 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    [Header("Config. Ground")]
+    private Character _playercontroller;
 
-    public float velocityGround;
-    public float distanceDestroy;
-    public float sizeGround;
-    public GameObject[] groundPrefab;
-    public MoveOffset[] moves;
-
-    [Header("Globals")]
-
-    public int score;
-    public Text txtScore;
-    public int count = 0;
-    public SceneManager sceneManager;
-
-    [Header("FX Sound")]
-
-    public AudioSource sfxStage;
-    public AudioSource sfxSource;
-    public AudioClip sfxJump;
-    public AudioClip sfxPoints;
-    public AudioClip sfxDamage;
-    public AudioClip sfxDeath;
-    public AudioClip sfxBoardSpin;
+    public float posY;
 
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
+        _playercontroller = FindObjectOfType(typeof(Character)) as Character;
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-
-    }
-
-    public void toScore(int qttPoints)
-    {
-        score += qttPoints;
-        txtScore.text = "Score: " + score.ToString();
-        sfxSource.PlayOneShot(sfxPoints);
-    }
-
-    public void changeScene(string sceneDestiny)
-    {
-        SceneManager.LoadScene(sceneDestiny);
+        posY = _playercontroller.transform.position.y;
     }
 }

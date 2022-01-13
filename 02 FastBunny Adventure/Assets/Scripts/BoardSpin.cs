@@ -24,7 +24,7 @@ public class BoardSpin : MonoBehaviour
 
                 if (oneSpin == false)
                 {
-                    _GameController.sfxSource.PlayOneShot(_GameController.sfxBoardSpin);
+                    //_GameController.sfxSource.PlayOneShot(_GameController.sfxBoardSpin);
                     oneSpin = true;
                 }
 

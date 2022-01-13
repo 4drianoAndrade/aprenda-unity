@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BtnJump : MonoBehaviour
 {
     public GameObject objectAction;
-    public actions btn;
+    //public actions btn;
     public Color[] color;
     private Image btnImg;
 
@@ -19,7 +19,7 @@ public class BtnJump : MonoBehaviour
     public void OnPointerDown()
     {
         btnImg.color = color[0];
-        objectAction.SendMessage(btn.ToString(), SendMessageOptions.DontRequireReceiver);
+        //objectAction.SendMessage(btn.ToString(), SendMessageOptions.DontRequireReceiver);
     }
 
     public void OnPointerUp()

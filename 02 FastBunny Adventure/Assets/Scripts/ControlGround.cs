@@ -13,7 +13,7 @@ public class ControlGround : MonoBehaviour
     {
         _GameController = FindObjectOfType(typeof(GameController)) as GameController;
         groundRb = GetComponent<Rigidbody2D>();
-        groundRb.velocity = new Vector2(_GameController.velocityGround, 0);
+        //groundRb.velocity = new Vector2(_GameController.velocityGround, 0);
     }
 
     // Update is called once per frame
@@ -25,6 +25,7 @@ public class ControlGround : MonoBehaviour
             {
                 isInstantiated = true;
 
+                /*
                 int idPrefab = 0;
                 int rand = Random.Range(0, 96);
 
@@ -73,12 +74,15 @@ public class ControlGround : MonoBehaviour
                 float posX = transform.position.x + _GameController.sizeGround;
                 float posY = transform.position.y;
                 temp.transform.position = new Vector2(posX, posY);
+                */
             }
         }
 
+        /*
         if (transform.position.x < _GameController.distanceDestroy)
         {
             Destroy(this.gameObject);
         }
+        */
     }
 }
