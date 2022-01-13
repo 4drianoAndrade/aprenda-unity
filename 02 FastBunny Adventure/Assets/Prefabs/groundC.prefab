@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4812007209647855226}
   - component: {fileID: 3338656470367649147}
   - component: {fileID: 977209744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: groundC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7773501898144981853}
   - component: {fileID: 2394173155354116697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: maskShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

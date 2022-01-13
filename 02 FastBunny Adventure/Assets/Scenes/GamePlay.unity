@@ -213,10 +213,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3854981734850724191, guid: e50835e020df2c64b9dc6333d4b25813, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8830779872801089357, guid: e50835e020df2c64b9dc6333d4b25813, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -432,8 +428,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 1878201355}
   speed: 5
-  jumpForce: 650
+  jumpForce: 600
+  extraJumps: 1
   isLeft: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!95 &858759329
 Animator:
   serializedVersion: 3
@@ -623,7 +623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1613173600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: surface
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -684,7 +684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1888883469}
   - component: {fileID: 1888883470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: maskShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 1981543356}
   - component: {fileID: 1981543355}
   - component: {fileID: 1981543354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
