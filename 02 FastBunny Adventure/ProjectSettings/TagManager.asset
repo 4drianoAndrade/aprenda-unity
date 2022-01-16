@@ -9,6 +9,7 @@ TagManager:
   - endOfScene
   - scenario
   - triggerObstacle
+  - projectile
   layers:
   - Default
   - TransparentFX

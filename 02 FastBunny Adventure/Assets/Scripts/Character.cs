@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
     private Rigidbody2D playerRb;
     private Animator playerAnimator;
-    private SpriteRenderer playerSr;
+    //private SpriteRenderer playerSr;
 
     public Transform groundCheck;
 
@@ -24,14 +24,22 @@ public class Character : MonoBehaviour
 
     public LayerMask whatIsGround;
 
+    public GameObject carrotProjectilePrefab;
+
+    public float shotForceBase;
+    private float shotForce;
+    public Transform weaponPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        playerSr = GetComponent<SpriteRenderer>();
+        //playerSr = GetComponent<SpriteRenderer>();
 
         exJump = extraJumps;
+
+        shotForce = shotForceBase;
     }
 
     void FixedUpdate()
@@ -80,6 +88,11 @@ public class Character : MonoBehaviour
         {
             jump();
         }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            shootCarrot();
+        }
     }
 
     void LateUpdate()
@@ -100,10 +113,21 @@ public class Character : MonoBehaviour
     {
         isLeft = !isLeft;
 
-        //float x = transform.localScale.x;
-        //x *= -1; // INVERTE O SINAL DO SCALE
-        //transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+        //playerSr.flipX = isLeft;
 
-        playerSr.flipX = isLeft;
+        float x = transform.localScale.x;
+        x *= -1; // INVERTE O SINAL DO SCALE
+        transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+
+        shotForce *= -1;
+    }
+
+    void shootCarrot()
+    {
+        GameObject temp = Instantiate(carrotProjectilePrefab);
+        temp.transform.position = weaponPosition.position;
+        temp.GetComponent<Rigidbody2D>().velocity = new Vector2(shotForce, 0);
+
+        Destroy(temp, 2f);
     }
 }
