@@ -481,9 +481,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 12.7852955, y: -1.4154972, z: -95.52899}
+    m_Target: {x: 5.0050216, y: 0.876021, z: -98.27292}
     speed: 2
-    m_Value: {x: 12.7852955, y: -1.4154972, z: -95.52899}
+    m_Value: {x: 5.0050216, y: 0.876021, z: -98.27292}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -534,9 +534,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 12.119352
+    m_Target: 8.761521
     speed: 2
-    m_Value: 12.119352
+    m_Value: 8.761521
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -589,9 +589,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 50fbffff5efbfffffc420000
+      m_SelectedIDs: 16430000
+      m_LastClickedID: 17174
+      m_ExpandedIDs: 5efbffff2a430000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -653,21 +653,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 75
   m_LastFolders:
-  - Assets/Sprites
+  - Assets/Prefabs
   m_LastFoldersGridSize: 75
   m_LastProjectPath: D:\GitHub\Aprenda Unity\02 FastBunny Adventure
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fe430000
-    m_LastClickedID: 17406
+    m_SelectedIDs: f8430000
+    m_LastClickedID: 17400
     m_ExpandedIDs: 00000000e043000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -804,7 +804,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 17148
+  m_LastSelectedObjectID: 17174
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52

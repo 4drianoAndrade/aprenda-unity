@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
 
     public float posY;
 
+    public int ammunition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,10 @@ public class GameController : MonoBehaviour
     void LateUpdate()
     {
         posY = _playercontroller.transform.position.y;
+    }
+
+    public void manageAmmo(int quantity)
+    {
+        ammunition += quantity;
     }
 }

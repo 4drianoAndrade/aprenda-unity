@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    private GameController _GameController;
     private Rigidbody2D playerRb;
     private Animator playerAnimator;
     //private SpriteRenderer playerSr;
@@ -33,6 +34,8 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _GameController = FindObjectOfType(typeof(GameController)) as GameController;
+
         playerRb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         //playerSr = GetComponent<SpriteRenderer>();
@@ -89,7 +92,7 @@ public class Character : MonoBehaviour
             jump();
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && _GameController.ammunition > 0)
         {
             shootCarrot();
         }
@@ -124,10 +127,24 @@ public class Character : MonoBehaviour
 
     void shootCarrot()
     {
+        _GameController.manageAmmo(-1);
+
         GameObject temp = Instantiate(carrotProjectilePrefab);
         temp.transform.position = weaponPosition.position;
         temp.GetComponent<Rigidbody2D>().velocity = new Vector2(shotForce, 0);
 
         Destroy(temp, 2f);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "collectable":
+
+                Destroy(collision.gameObject);
+                _GameController.manageAmmo(1);
+                break;
+        }
     }
 }
