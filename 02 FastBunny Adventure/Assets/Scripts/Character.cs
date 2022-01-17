@@ -149,8 +149,20 @@ public class Character : MonoBehaviour
         {
             case "collectable":
 
+                IdCollectable idC = collision.gameObject.GetComponent<IdCollectable>();
+
+                switch (idC.itemName)
+                {
+                    case "ammunition":
+                        _GameController.manageAmmo(idC.quantity);
+                        break;
+
+                    case "egg":
+                        print("Coletei um ovo de páscoa");
+                        break;
+                }
+
                 Destroy(collision.gameObject);
-                _GameController.manageAmmo(1);
                 break;
         }
     }
