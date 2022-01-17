@@ -31,6 +31,9 @@ public class Character : MonoBehaviour
     private float shotForce;
     public Transform weaponPosition;
 
+    public float delayBetweenShots;
+    private bool shot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,7 +95,7 @@ public class Character : MonoBehaviour
             jump();
         }
 
-        if (Input.GetButtonDown("Fire1") && _GameController.ammunition > 0)
+        if (Input.GetButton("Fire1") && _GameController.ammunition > 0 && shot == false)
         {
             shootCarrot();
         }
@@ -127,6 +130,10 @@ public class Character : MonoBehaviour
 
     void shootCarrot()
     {
+        shot = true;
+
+        StartCoroutine("delayShot");
+
         _GameController.manageAmmo(-1);
 
         GameObject temp = Instantiate(carrotProjectilePrefab);
@@ -146,5 +153,11 @@ public class Character : MonoBehaviour
                 _GameController.manageAmmo(1);
                 break;
         }
+    }
+
+    IEnumerator delayShot()
+    {
+        yield return new WaitForSeconds(delayBetweenShots);
+        shot = false;
     }
 }

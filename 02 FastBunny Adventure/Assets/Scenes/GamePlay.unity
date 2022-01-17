@@ -696,6 +696,7 @@ MonoBehaviour:
   carrotProjectilePrefab: {fileID: 2718858492043059842, guid: d340a5f04375eaf4f84ef5ce3b08c2a5, type: 3}
   shotForceBase: 10
   weaponPosition: {fileID: 674638109}
+  delayBetweenShots: 0.3
 --- !u!95 &858759329
 Animator:
   serializedVersion: 3
