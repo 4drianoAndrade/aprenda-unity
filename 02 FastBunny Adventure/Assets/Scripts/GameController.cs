@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
 
     public int ammunition;
 
+    public int eggAmmunition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +28,10 @@ public class GameController : MonoBehaviour
     public void manageAmmo(int quantity)
     {
         ammunition += quantity;
+    }
+
+    public void manageEggAmmo(int quantity)
+    {
+        eggAmmunition += quantity;
     }
 }

@@ -26,9 +26,12 @@ public class Character : MonoBehaviour
     public LayerMask whatIsGround;
 
     public GameObject carrotProjectilePrefab;
+    public GameObject eggProjectilePrefab;
 
     public float shotForceBase;
     private float shotForce;
+
+    public float shotForceX, shotForceY;
     public Transform weaponPosition;
 
     public float delayBetweenShots;
@@ -44,7 +47,6 @@ public class Character : MonoBehaviour
         //playerSr = GetComponent<SpriteRenderer>();
 
         exJump = extraJumps;
-
         shotForce = shotForceBase;
     }
 
@@ -99,6 +101,11 @@ public class Character : MonoBehaviour
         {
             shootCarrot();
         }
+
+        if (Input.GetButton("Fire2") && _GameController.eggAmmunition > 0 && shot == false)
+        {
+            shootEgg();
+        }
     }
 
     void LateUpdate()
@@ -126,6 +133,7 @@ public class Character : MonoBehaviour
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 
         shotForce *= -1;
+        shotForceX *= -1;
     }
 
     void shootCarrot()
@@ -139,6 +147,22 @@ public class Character : MonoBehaviour
         GameObject temp = Instantiate(carrotProjectilePrefab);
         temp.transform.position = weaponPosition.position;
         temp.GetComponent<Rigidbody2D>().velocity = new Vector2(shotForce, 0);
+
+        Destroy(temp, 2f);
+    }
+
+    void shootEgg()
+    {
+        shot = true;
+
+        StartCoroutine("delayShot");
+
+        _GameController.manageEggAmmo(-1);
+
+        GameObject temp = Instantiate(eggProjectilePrefab);
+        temp.transform.position = weaponPosition.position;
+        //temp.GetComponent<Rigidbody2D>().velocity = new Vector2(shotForce, 0);
+        temp.GetComponent<Rigidbody2D>().AddForce(new Vector2(shotForceX, shotForceY));
 
         Destroy(temp, 2f);
     }
@@ -157,8 +181,8 @@ public class Character : MonoBehaviour
                         _GameController.manageAmmo(idC.quantity);
                         break;
 
-                    case "egg":
-                        print("Coletei um ovo de páscoa");
+                    case "eggAmmunition":
+                        _GameController.manageEggAmmo(idC.quantity);
                         break;
                 }
 
