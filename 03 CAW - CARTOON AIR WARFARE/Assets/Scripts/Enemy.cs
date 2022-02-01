@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private PlayerController _playerController;
+
     public GameObject explosionPrefab;
     public GameObject[] loot;
+
+    public Transform weapon;
+    public GameObject shot;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
     }
 
     // Update is called once per frame
     void Update()
     {
+        weapon.right = _playerController.transform.position - transform.position;
 
+        if (Input.GetButtonDown("Fire2"))
+        {
+            GameObject temp = Instantiate(shot, weapon.position, weapon.localRotation);
+            temp.GetComponent<Rigidbody2D>().velocity = weapon.right * 3;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
