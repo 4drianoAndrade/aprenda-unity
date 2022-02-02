@@ -12,22 +12,20 @@ public class Enemy : MonoBehaviour
     public Transform weapon;
     public GameObject shot;
 
+    public float delayBetweenShots;
+
     // Start is called before the first frame update
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+
+        StartCoroutine("shoot");
     }
 
     // Update is called once per frame
     void Update()
     {
-        weapon.right = _playerController.transform.position - transform.position;
 
-        if (Input.GetButtonDown("Fire2"))
-        {
-            GameObject temp = Instantiate(shot, weapon.position, weapon.localRotation);
-            temp.GetComponent<Rigidbody2D>().velocity = weapon.right * 3;
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -73,5 +71,19 @@ public class Enemy : MonoBehaviour
 
             Instantiate(loot[itemId], transform.position, transform.localRotation);
         }
+    }
+
+    void enemyShot()
+    {
+        weapon.right = _playerController.transform.position - transform.position;
+        GameObject temp = Instantiate(shot, weapon.position, weapon.localRotation);
+        temp.GetComponent<Rigidbody2D>().velocity = weapon.right * 3;
+    }
+
+    IEnumerator shoot()
+    {
+        yield return new WaitForSeconds(delayBetweenShots);
+        enemyShot();
+        StartCoroutine("shoot");
     }
 }
