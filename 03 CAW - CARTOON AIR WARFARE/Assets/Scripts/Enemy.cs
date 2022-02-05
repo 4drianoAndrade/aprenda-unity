@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public Transform weapon;
     public GameObject shot;
 
-    public float delayBetweenShots;
+    public float[] delayBetweenShots;
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator shoot()
     {
-        yield return new WaitForSeconds(delayBetweenShots);
+        yield return new WaitForSeconds(Random.Range(delayBetweenShots[0], delayBetweenShots[1]));
         enemyShot();
         StartCoroutine("shoot");
     }
