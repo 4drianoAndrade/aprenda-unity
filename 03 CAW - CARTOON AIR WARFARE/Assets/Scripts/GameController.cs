@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public PlayerController _playerController;
+    private PlayerController _playerController;
 
     [Header("Movement Limits")]
     public Transform upperLimit;
@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
 
     [Header("Camera Side Limit")]
     public Camera cam;
+    public Transform cameraFinalPosition;
+    public float phaseSpeed;
     public Transform leftCameraLimit;
     public Transform rightCameraLimit;
     public float sideCameraSpeed;
@@ -32,6 +34,8 @@ public class GameController : MonoBehaviour
 
     void LateUpdate()
     {
+        cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(cam.transform.position.x, cameraFinalPosition.position.y, -10), phaseSpeed * Time.deltaTime);
+
         controlCameraPosition();
     }
 
