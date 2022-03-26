@@ -1646,13 +1646,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c136143bca3b8ae4d991a00335ffc736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionMovement: 1
   movementSpeed: 3
   curveStartingPoint: 3
   curveAngle: 90
   increment: -1
-  isPosX: 0
-  isPosY: 1
-  isNegative: 0
 --- !u!212 &571515436
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2800,13 +2798,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c136143bca3b8ae4d991a00335ffc736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionMovement: 3
   movementSpeed: 3
   curveStartingPoint: -3
   curveAngle: 90
   increment: -1.5
-  isPosX: 1
-  isPosY: 0
-  isNegative: 1
 --- !u!212 &1538295912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3263,13 +3259,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c136143bca3b8ae4d991a00335ffc736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionMovement: 2
   movementSpeed: 3
   curveStartingPoint: 3
   curveAngle: 90
   increment: -1.5
-  isPosX: 1
-  isPosY: 0
-  isNegative: 0
 --- !u!212 &1739595848
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3630,13 +3624,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c136143bca3b8ae4d991a00335ffc736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionMovement: 0
   movementSpeed: 3
   curveStartingPoint: -3
   curveAngle: 90
   increment: -1
-  isPosX: 0
-  isPosY: 1
-  isNegative: 1
 --- !u!212 &1899127282
 SpriteRenderer:
   m_ObjectHideFlags: 0

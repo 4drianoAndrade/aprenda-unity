@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum direction
+{
+    Above, Below, Left, Right
+}
+
 public class IAEnemyA : MonoBehaviour
 {
+    public direction directionMovement;
+
     public float movementSpeed;
     public float curveStartingPoint;
     private bool isCurve;
@@ -11,8 +18,6 @@ public class IAEnemyA : MonoBehaviour
     public float increment;
     private float incremented;
     private float zRotation;
-    public bool isPosX, isPosY;
-    public bool isNegative;
 
     // Start is called before the first frame update
     void Start()
@@ -23,22 +28,22 @@ public class IAEnemyA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y <= curveStartingPoint && isCurve == false && isPosY == true && isNegative == false)
+        if (transform.position.y <= curveStartingPoint && isCurve == false && directionMovement == direction.Below)
         {
             isCurve = true;
         }
 
-        if (transform.position.y >= curveStartingPoint && isCurve == false && isPosY == true && isNegative == true)
+        if (transform.position.y >= curveStartingPoint && isCurve == false && directionMovement == direction.Above)
         {
             isCurve = true;
         }
 
-        if (transform.position.x <= curveStartingPoint && isCurve == false && isPosX == true && isNegative == false)
+        if (transform.position.x <= curveStartingPoint && isCurve == false && directionMovement == direction.Left)
         {
             isCurve = true;
         }
 
-        if (transform.position.x >= curveStartingPoint && isCurve == false && isPosX == true && isNegative == true)
+        if (transform.position.x >= curveStartingPoint && isCurve == false && directionMovement == direction.Right)
         {
             isCurve = true;
         }
