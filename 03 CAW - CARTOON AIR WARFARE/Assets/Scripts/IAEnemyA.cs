@@ -9,6 +9,7 @@ public enum direction
 
 public class IAEnemyA : MonoBehaviour
 {
+    private GameController _GameController;
     public direction directionMovement;
 
     public float movementSpeed;
@@ -19,7 +20,9 @@ public class IAEnemyA : MonoBehaviour
     private float incremented;
     private float zRotation;
 
-    public GameObject prefabShot;
+    public int idBullet;
+    public tagBullets tagShot;
+
     public Transform gun;
     public float shotSpeed;
 
@@ -28,6 +31,7 @@ public class IAEnemyA : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _GameController = FindObjectOfType(typeof(GameController)) as GameController;
         zRotation = transform.eulerAngles.z;
     }
 
@@ -39,7 +43,10 @@ public class IAEnemyA : MonoBehaviour
 
     void shoot()
     {
-        GameObject temp = Instantiate(prefabShot, gun.position, transform.localRotation);
+        GameObject temp = Instantiate(_GameController.bullet[idBullet], gun.position, transform.localRotation);
+
+        temp.transform.tag = _GameController.applyTag(tagShot);
+
         temp.GetComponent<Rigidbody2D>().velocity = transform.up * -1 * shotSpeed;
     }
 
@@ -53,6 +60,18 @@ public class IAEnemyA : MonoBehaviour
         yield return new WaitForSeconds(delayShot);
         shoot();
         StartCoroutine("shotControl");
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "playerShot":
+                GameObject temp = Instantiate(_GameController.explosionPrefab, transform.position, _GameController.explosionPrefab.transform.localRotation);
+                Destroy(collision.gameObject);
+                Destroy(this.gameObject);
+                break;
+        }
     }
 
     void curveControl()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private PlayerController _playerController;
+    private PlayerController _PlayerController;
 
     public GameObject explosionPrefab;
     public GameObject[] loot;
@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+        _PlayerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
 
         StartCoroutine("shoot");
     }
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
 
     void enemyShot()
     {
-        weapon.right = _playerController.transform.position - transform.position;
+        weapon.right = _PlayerController.transform.position - transform.position;
         GameObject temp = Instantiate(shot, weapon.position, weapon.localRotation);
         temp.GetComponent<Rigidbody2D>().velocity = weapon.right * 3;
     }
