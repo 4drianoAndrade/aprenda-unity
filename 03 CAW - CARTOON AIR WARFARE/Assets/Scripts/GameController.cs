@@ -13,7 +13,10 @@ public class GameController : MonoBehaviour
 
     public GameObject playerPrefab;
     public int extraLife;
-    public Transform playerSpawn;
+    public Transform playerSpawnPosition;
+
+    public float delayPlayerSpawn;
+    public float invincibleTime;
 
     [Header("Movement Limits")]
     public Transform upperLimit;
@@ -129,11 +132,19 @@ public class GameController : MonoBehaviour
 
         if (extraLife >= 0)
         {
-            Instantiate(playerPrefab, playerSpawn.position, playerSpawn.localRotation);
+            StartCoroutine("playerSpawn");
         }
         else
         {
             print("GAME OVER");
         }
+    }
+
+    IEnumerator playerSpawn()
+    {
+        yield return new WaitForSeconds(delayPlayerSpawn);
+        GameObject temp = Instantiate(playerPrefab, playerSpawnPosition.position, playerSpawnPosition.localRotation);
+        yield return new WaitForEndOfFrame();
+        _PlayerController.StartCoroutine("Invincible");
     }
 }

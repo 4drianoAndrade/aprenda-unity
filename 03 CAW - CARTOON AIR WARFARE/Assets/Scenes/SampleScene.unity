@@ -1031,7 +1031,9 @@ MonoBehaviour:
   _PlayerController: {fileID: 0}
   playerPrefab: {fileID: 3837354536816851393, guid: 1e750cf6800c54b479157f8782bd182f, type: 3}
   extraLife: 2
-  playerSpawn: {fileID: 1370158444}
+  playerSpawnPosition: {fileID: 1370158444}
+  delayPlayerSpawn: 1
+  invincibleTime: 2
   upperLimit: {fileID: 1835230325}
   bottomLimit: {fileID: 1471180908}
   leftLimit: {fileID: 1486113785}

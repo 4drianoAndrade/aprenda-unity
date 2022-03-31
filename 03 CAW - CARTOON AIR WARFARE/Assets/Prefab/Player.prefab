@@ -278,8 +278,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211e576b1fa666f4e94f409e12374c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smokeSR: {fileID: 3837354536700445965}
   speed: 4
   weaponPosition: {fileID: 3837354535859478895}
   shotSpeed: 5
   idBullet: 0
   tagShot: 0
+  invincibleColor: {r: 1, g: 1, b: 1, a: 0.627451}
+  blinkDelay: 0.3
