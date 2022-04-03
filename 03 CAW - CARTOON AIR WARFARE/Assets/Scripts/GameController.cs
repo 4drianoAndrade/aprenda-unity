@@ -24,13 +24,9 @@ public class GameController : MonoBehaviour
     public Transform leftLimit;
     public Transform rightLimit;
 
-    [Header("Camera Side Limit")]
-    public Camera cam;
-    public Transform cameraFinalPosition;
-    public float phaseSpeed;
-    public Transform leftCameraLimit;
-    public Transform rightCameraLimit;
-    public float sideCameraSpeed;
+    public Transform finalPosStage;
+    public Transform scenery;
+    public float stageSpeed;
 
     [Header("Prefabs")]
     public GameObject[] bullet;
@@ -41,7 +37,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_PlayerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+
     }
 
     // Update is called once per frame
@@ -55,30 +51,7 @@ public class GameController : MonoBehaviour
 
     void LateUpdate()
     {
-        //cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(cam.transform.position.x, cameraFinalPosition.position.y, -10), phaseSpeed * Time.deltaTime);
-        //controlCameraPosition();
-    }
-
-    void controlCameraPosition()
-    {
-        if (cam.transform.position.x > leftCameraLimit.position.x && cam.transform.position.x < rightCameraLimit.position.x)
-        {
-            moveCamera();
-        }
-        else if (cam.transform.position.x <= leftCameraLimit.position.x && _PlayerController.transform.position.x > leftCameraLimit.position.x)
-        {
-            moveCamera();
-        }
-        else if (cam.transform.position.x >= rightCameraLimit.position.x && _PlayerController.transform.position.x < rightCameraLimit.position.x)
-        {
-            moveCamera();
-        }
-    }
-
-    void moveCamera()
-    {
-        Vector3 cameraTargetPosition = new Vector3(_PlayerController.transform.position.x, cam.transform.position.y, -10);
-        cam.transform.position = Vector3.Lerp(cam.transform.position, cameraTargetPosition, sideCameraSpeed * Time.deltaTime);
+        scenery.position = Vector3.MoveTowards(scenery.position, new Vector3(scenery.position.x, finalPosStage.position.y, 0), stageSpeed * Time.deltaTime);
     }
 
     void limitPlayerMovement()

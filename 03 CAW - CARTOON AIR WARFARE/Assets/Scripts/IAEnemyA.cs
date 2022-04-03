@@ -44,9 +44,7 @@ public class IAEnemyA : MonoBehaviour
     void shoot()
     {
         GameObject temp = Instantiate(_GameController.bullet[idBullet], gun.position, transform.localRotation);
-
         temp.transform.tag = _GameController.applyTag(tagShot);
-
         temp.GetComponent<Rigidbody2D>().velocity = transform.up * -1 * shotSpeed;
     }
 

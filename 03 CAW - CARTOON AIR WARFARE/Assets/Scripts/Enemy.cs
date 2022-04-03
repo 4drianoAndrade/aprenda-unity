@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public GameObject explosionPrefab;
     public GameObject[] loot;
 
-    public Transform weapon;
+    public Transform gun;
     public GameObject shot;
 
     public float[] delayBetweenShots;
@@ -75,9 +75,9 @@ public class Enemy : MonoBehaviour
 
     void enemyShot()
     {
-        weapon.right = _PlayerController.transform.position - transform.position;
-        GameObject temp = Instantiate(shot, weapon.position, weapon.localRotation);
-        temp.GetComponent<Rigidbody2D>().velocity = weapon.right * 3;
+        gun.right = _PlayerController.transform.position - transform.position;
+        GameObject temp = Instantiate(shot, gun.position, gun.localRotation);
+        temp.GetComponent<Rigidbody2D>().velocity = gun.right * 3;
     }
 
     IEnumerator shoot()
