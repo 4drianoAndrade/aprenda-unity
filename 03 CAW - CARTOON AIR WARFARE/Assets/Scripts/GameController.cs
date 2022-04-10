@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum tagBullets
 {
@@ -47,10 +48,18 @@ public class GameController : MonoBehaviour
     public Color initialSmokeColor;
     public Color finalSmokeColor;
 
+    [Header("User Interface")]
+    public Text txtScore;
+    public Text txtExtraLife;
+    public int score;
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine("introStage");
+
+        txtScore.text = "0";
+        txtExtraLife.text = "x" + extraLife.ToString();
     }
 
     // Update is called once per frame
@@ -140,6 +149,10 @@ public class GameController : MonoBehaviour
         {
             print("GAME OVER");
         }
+
+        if (extraLife < 0) { extraLife = 0; }
+
+        txtExtraLife.text = "x" + extraLife.ToString();
     }
 
     IEnumerator playerSpawn()
@@ -177,5 +190,11 @@ public class GameController : MonoBehaviour
             _PlayerController.smokeSR.color = Color.Lerp(_PlayerController.smokeSR.color, finalSmokeColor, 0.1f);
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public void addScore(int points)
+    {
+        score += points;
+        txtScore.text = score.ToString();
     }
 }

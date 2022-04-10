@@ -5,14 +5,12 @@ using UnityEngine;
 public class IATank : MonoBehaviour
 {
     private GameController _GameController;
-
     public int idBullet;
     public tagBullets tagShot;
-
     public Transform gun;
     public float shotSpeed;
-
     public float delayShot;
+    public int points;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +27,11 @@ public class IATank : MonoBehaviour
     void OnBecameVisible()
     {
         StartCoroutine("shotControl");
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 
     IEnumerator shotControl()
@@ -56,6 +59,9 @@ public class IATank : MonoBehaviour
             case "playerShot":
                 GameObject temp = Instantiate(_GameController.explosionPrefab, transform.position, _GameController.explosionPrefab.transform.localRotation);
                 temp.transform.parent = _GameController.scenery;
+
+                _GameController.addScore(points);
+
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject);
                 break;
