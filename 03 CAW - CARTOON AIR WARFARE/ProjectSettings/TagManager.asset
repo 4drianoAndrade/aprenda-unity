@@ -7,6 +7,7 @@ TagManager:
   - playerShot
   - enemyShot
   - Enemy
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -41,11 +42,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Scenery
-    uniqueID: 1783452837
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Scenery
+    uniqueID: 1783452837
     locked: 0
   - name: First Plan
     uniqueID: 1164353755

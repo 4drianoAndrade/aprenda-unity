@@ -7,14 +7,18 @@ public enum tagBullets
     Player, Enemy
 }
 
+public enum gameState
+{
+    Intro, Gameplay
+}
+
 public class GameController : MonoBehaviour
 {
     public PlayerController _PlayerController;
-
+    public gameState currentState;
     public GameObject playerPrefab;
     public int extraLife;
     public Transform playerSpawnPosition;
-
     public float delayPlayerSpawn;
     public float invincibleTime;
 
@@ -23,7 +27,6 @@ public class GameController : MonoBehaviour
     public Transform bottomLimit;
     public Transform leftLimit;
     public Transform rightLimit;
-
     public Transform finalPosStage;
     public Transform scenery;
     public float stageSpeed;
@@ -31,13 +34,21 @@ public class GameController : MonoBehaviour
     [Header("Prefabs")]
     public GameObject[] bullet;
     public GameObject explosionPrefab;
-
     public bool isPlayerAlive;
+
+    [Header("Stage Configuration")]
+    public float shipInitialSize;
+    public float originalSize;
+    public Transform shipStartingPosition;
+    public Transform takeoffPosition;
+    public float takeoffSpeed;
+    private float currentSpeed;
+    private bool isTakeOff;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine("introStage");
     }
 
     // Update is called once per frame
@@ -47,11 +58,25 @@ public class GameController : MonoBehaviour
         {
             limitPlayerMovement();
         }
+
+        if (isTakeOff == true && currentState == gameState.Intro)
+        {
+            _PlayerController.transform.position = Vector3.MoveTowards(_PlayerController.transform.position, takeoffPosition.position, currentSpeed * Time.deltaTime);
+
+            if (_PlayerController.transform.position == takeoffPosition.position)
+            {
+                StartCoroutine("moveUp");
+                currentState = gameState.Gameplay;
+            }
+        }
     }
 
     void LateUpdate()
     {
-        scenery.position = Vector3.MoveTowards(scenery.position, new Vector3(scenery.position.x, finalPosStage.position.y, 0), stageSpeed * Time.deltaTime);
+        if (currentState == gameState.Gameplay)
+        {
+            scenery.position = Vector3.MoveTowards(scenery.position, new Vector3(scenery.position.x, finalPosStage.position.y, 0), stageSpeed * Time.deltaTime);
+        }
     }
 
     void limitPlayerMovement()
@@ -119,5 +144,29 @@ public class GameController : MonoBehaviour
         GameObject temp = Instantiate(playerPrefab, playerSpawnPosition.position, playerSpawnPosition.localRotation);
         yield return new WaitForEndOfFrame();
         _PlayerController.StartCoroutine("Invincible");
+    }
+
+    IEnumerator introStage()
+    {
+        _PlayerController.smokeSR.enabled = false;
+        _PlayerController.transform.localScale = new Vector3(shipInitialSize, shipInitialSize, shipInitialSize);
+        _PlayerController.transform.position = shipStartingPosition.position;
+
+        yield return new WaitForSeconds(2);
+        isTakeOff = true;
+
+        for (currentSpeed = 0; currentSpeed < takeoffSpeed; currentSpeed += 0.2f)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator moveUp()
+    {
+        for (float s = shipInitialSize; s < originalSize; s += 0.025f)
+        {
+            _PlayerController.transform.localScale = new Vector3(s, s, s);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

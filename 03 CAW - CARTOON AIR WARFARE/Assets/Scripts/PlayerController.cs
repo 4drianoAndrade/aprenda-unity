@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRb;
     private SpriteRenderer playerSR;
     public SpriteRenderer smokeSR;
+    public Transform shadow;
 
     public float speed;
     public Transform weaponPosition;
@@ -32,14 +33,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        playerRb.velocity = new Vector2(horizontal * speed, vertical * speed);
-
-        if (Input.GetButtonDown("Fire1"))
+        if (_GameController.currentState == gameState.Gameplay)
         {
-            shot();
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+
+            playerRb.velocity = new Vector2(horizontal * speed, vertical * speed);
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                shot();
+            }
         }
     }
 
