@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     public GameObject explosionPrefab;
     public bool isPlayerAlive;
 
-    [Header("Stage Configuration")]
+    [Header("Intro Configuration")]
     public float shipInitialSize;
     public float originalSize;
     public Transform shipStartingPosition;
@@ -44,6 +44,8 @@ public class GameController : MonoBehaviour
     public float takeoffSpeed;
     private float currentSpeed;
     private bool isTakeOff;
+    public Color initialSmokeColor;
+    public Color finalSmokeColor;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +70,8 @@ public class GameController : MonoBehaviour
                 StartCoroutine("moveUp");
                 currentState = gameState.Gameplay;
             }
+
+            _PlayerController.smokeSR.color = Color.Lerp(initialSmokeColor, finalSmokeColor, 0.1f);
         }
     }
 
@@ -148,7 +152,8 @@ public class GameController : MonoBehaviour
 
     IEnumerator introStage()
     {
-        _PlayerController.smokeSR.enabled = false;
+        _PlayerController.smokeSR.color = initialSmokeColor;
+        _PlayerController.shadow.SetActive(false);
         _PlayerController.transform.localScale = new Vector3(shipInitialSize, shipInitialSize, shipInitialSize);
         _PlayerController.transform.position = shipStartingPosition.position;
 
@@ -163,9 +168,13 @@ public class GameController : MonoBehaviour
 
     IEnumerator moveUp()
     {
-        for (float s = shipInitialSize; s < originalSize; s += 0.025f)
+        _PlayerController.shadow.SetActive(true);
+
+        for (float scale = shipInitialSize; scale < originalSize; scale += 0.025f)
         {
-            _PlayerController.transform.localScale = new Vector3(s, s, s);
+            _PlayerController.transform.localScale = new Vector3(scale, scale, scale);
+            _PlayerController.shadow.transform.localScale = new Vector3(scale, scale, scale);
+            _PlayerController.smokeSR.color = Color.Lerp(_PlayerController.smokeSR.color, finalSmokeColor, 0.1f);
             yield return new WaitForSeconds(0.1f);
         }
     }

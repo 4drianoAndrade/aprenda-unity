@@ -1808,6 +1808,8 @@ MonoBehaviour:
   shipStartingPosition: {fileID: 1493189769}
   takeoffPosition: {fileID: 2043451299}
   takeoffSpeed: 2
+  initialSmokeColor: {r: 1, g: 1, b: 1, a: 0}
+  finalSmokeColor: {r: 1, g: 1, b: 1, a: 0.7647059}
 --- !u!1 &1757894686
 GameObject:
   m_ObjectHideFlags: 0

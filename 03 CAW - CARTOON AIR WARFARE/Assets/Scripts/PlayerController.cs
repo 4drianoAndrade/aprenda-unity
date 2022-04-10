@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRb;
     private SpriteRenderer playerSR;
     public SpriteRenderer smokeSR;
-    public Transform shadow;
+    public GameObject shadow;
 
     public float speed;
     public Transform weaponPosition;
